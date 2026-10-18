@@ -1,0 +1,27 @@
+name: RtpPlus
+main: dev.rtpplus.RtpPlugin
+version: 2.0.0
+api-version: '1.21'
+description: Random teleport mit GUI (Overworld, Nether, End), nie in festen Blöcken
+commands:
+  rtp:
+    description: Zufälliger Teleport (öffnet eine GUI) - /rtp [overworld|nether|end]
+    aliases: [wild, randomtp]
+    permission: rtpplus.use
+    usage: /rtp [overworld|nether|end]
+permissions:
+  rtpplus.use:
+    description: /rtp benutzen
+    default: true
+  rtpplus.world.overworld:
+    description: In die Overworld teleportieren
+    default: true
+  rtpplus.world.nether:
+    description: In den Nether teleportieren
+    default: true
+  rtpplus.world.end:
+    description: In das End teleportieren
+    default: true
+  rtpplus.bypass:
+    description: Kein Cooldown
+    default: op

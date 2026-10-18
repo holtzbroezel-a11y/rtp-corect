@@ -1,0 +1,12 @@
+# radius 500000 = Bereich von 1.000.000 x 1.000.000 Bloecken (-500000 bis +500000), Mitte 0,0
+radius: 500000
+cooldown-seconds: 10
+max-attempts: 40
+# Im End gibt es viel Leere, deshalb mehr Versuche
+end-max-attempts: 120
+
+# Welten pro Dimension. Leer lassen = automatisch die erste Welt dieser Art nehmen.
+worlds:
+  overworld: ""
+  nether: ""
+  end: ""
