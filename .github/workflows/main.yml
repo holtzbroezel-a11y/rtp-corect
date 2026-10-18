@@ -1,0 +1,23 @@
+name: Build
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Dateien einsortieren
+        run: |
+          mkdir -p src/main/java/dev/rtpplus src/main/resources
+          find . -name RtpPlugin.java -not -path "./src/*" -exec mv {} src/main/java/dev/rtpplus/ \;
+          find . -name plugin.yml -not -path "./src/*" -exec mv {} src/main/resources/ \;
+          find . -name config.yml -not -path "./src/*" -exec mv {} src/main/resources/ \;
+          test -f src/main/java/dev/rtpplus/RtpPlugin.java || (echo "RtpPlugin.java fehlt im Repo!" && exit 1)
+      - run: mvn -B package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RtpPlus
+          path: target/RtpPlus.jar
